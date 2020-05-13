@@ -1,0 +1,109 @@
+initializr:
+  # 所添加依赖 采用
+  dependencies:
+    - name: Web
+      content:
+        - name: Web
+          id: web
+          description: Servlet web application with Spring MVC and Tomcat
+        - name: Spring Reactive Web
+          id: webflux
+          description: Build reactive web applications with Spring WebFlux and Netty.
+          facets:
+            - json
+            - reactive
+    - name: Common
+      content:
+        - name: commons-lang3
+          id: commons-lang3
+          groupId: org.apache.commons
+          artifactId: commons-lang3
+          starter: false
+    - name: SQL
+      content:
+        - name: mybatis framework
+          id: mybatis
+          groupId: org.mybatis.spring.boot
+          artifactId: mybatis-spring-boot-starter
+          version: 2.1.2
+          starter: false
+    - name: CHOICE
+      repository: choice-nexus
+      content:
+        - name: apollo config center client
+          id: apollo
+          groupId: com.ctrip.framework.apollo
+          artifactId: apollo-client
+          version: 0.10.2
+          scope: runtime
+          description: apollo client
+          starter: false
+        - name: choice logger
+          id: choice-driver-logger
+          groupId: com.choice.cloud.architect
+          artifactId: choice-driver-logger
+          version: 1.1.0-RELEASE
+          description: choice logger
+          starter: false
+        - name: choice Trace
+          id: choice-driver-tracing-analysis-2x
+          groupId: com.choice.cloud.architect
+          artifactId: choice-driver-tracing-analysis-2x
+          version: 1.1.3-RELEASE
+          description: choice Trace
+          starter: false
+        - name: opentracing
+          id: opentracing-spring-cloud-core
+          groupId: io.opentracing.contrib
+          artifactId: opentracing-spring-cloud-core
+          version: 0.2.6
+          description: opentracing
+          starter: false
+        - name: gray auto config
+          id: gray-spring-boot-starter
+          groupId: com.choice.cloud
+          artifactId: gray-spring-boot-starter
+          version: 0.0.7-SNAPSHOT
+          description: gray auto config
+          starter: false
+        - name: lombok
+          id: lombok
+          groupId: org.projectlombok
+          artifactId: lombok
+          starter: false
+          description: Java annotation library which helps to reduce boilerplate code.
+          scope: annotationProcessor
+  types:
+    - name: Maven Project
+      id: maven-project
+      description: Generate a Maven based project archive
+      tags:
+        build: maven
+        format: project
+      default: true
+      action: /starter.zip
+  packagings:
+    - name: Jar
+      id: jar
+      default: true
+  javaVersions:
+    - id: 1.8
+      name: 8
+      default: true
+  languages:
+    - name: Java
+      id: java
+      default: true
+  group-id:
+    value: com.choice.cloud
+  artifact-id:
+    value: initializr
+  env:
+    repositories:
+      choice-nexus:
+        name: choice-nexus
+        url: http://repo.choicesaas.cn/nexus/content/groups/public
+        snapshotsEnabled: true
+      central-aliyun:
+        name: central-aliyun
+        url: http://maven.aliyun.com/nexus/content/groups/public

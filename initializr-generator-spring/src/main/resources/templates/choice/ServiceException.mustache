@@ -1,0 +1,28 @@
+package io.spring.initializr.generator.spring.choice;
+
+/**
+ * @author lanboo
+ * @date 2020/5/7 10:06
+ * @description 业务异常
+ */
+public class ServiceException extends RuntimeException {
+    private ResponseInfo responseInfo;
+
+    public ServiceException(String message){
+        super(message);
+    }
+
+    public ServiceException(ResponseInfo responseInfo){
+        super(responseInfo.getDesc());
+        this.responseInfo = responseInfo;
+    }
+
+    public ResponseInfo getResponseInfo() {
+        return responseInfo;
+    }
+
+    public ServiceException setResponseInfo(ResponseInfo responseInfo) {
+        this.responseInfo = responseInfo;
+        return this;
+    }
+}
